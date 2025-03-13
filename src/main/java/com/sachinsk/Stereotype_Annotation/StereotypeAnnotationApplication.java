@@ -15,9 +15,12 @@ public class StereotypeAnnotationApplication {
 		context.refresh();
 
 		//Getting the Bean from the component class
-		ProductRatingComponent productRatingComponent =
-				context.getBean(ProductRatingComponent.class);
-		productRatingComponent.ratingFunction();
+//		ProductRatingComponent productRatingComponent =
+//				context.getBean(ProductRatingComponent.class);
+//		productRatingComponent.ratingFunction();
+		ProductRatingService productRatingService = context.getBean(ProductRatingService.class);
+		productRatingService.ratingService(4);
+		productRatingService.ratingService(-3);
 		context.close();
 	}
 
