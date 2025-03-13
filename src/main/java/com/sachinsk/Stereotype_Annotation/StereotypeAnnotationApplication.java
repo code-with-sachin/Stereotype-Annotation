@@ -18,9 +18,24 @@ public class StereotypeAnnotationApplication {
 //		ProductRatingComponent productRatingComponent =
 //				context.getBean(ProductRatingComponent.class);
 //		productRatingComponent.ratingFunction();
-		ProductRatingService productRatingService = context.getBean(ProductRatingService.class);
-		productRatingService.ratingService(4);
-		productRatingService.ratingService(-3);
+
+//		ProductRatingService productRatingService = context.getBean(ProductRatingService.class);
+//		productRatingService.ratingService(4);
+//		productRatingService.ratingService(-3);
+
+		//Getting bean from Repository
+		ProductRatingRepository repository = context.getBean(ProductRatingRepository.class);
+
+		repository.save(new ProductRating("Dell Laptop", 4, 1L));
+		repository.save(new ProductRating("ACER Laptop", 3, 2L));
+
+		//fetching
+		ProductRating productRating = repository.findProductRatingById(1L);
+		System.out.println(productRating);
+		System.out.println("Product Id is : " + productRating.getProductId());
+		System.out.println("Product Name is : " + productRating.getProductName());
+		System.out.println("Product Rating is : " + productRating.getRating());
+
 		context.close();
 	}
 
