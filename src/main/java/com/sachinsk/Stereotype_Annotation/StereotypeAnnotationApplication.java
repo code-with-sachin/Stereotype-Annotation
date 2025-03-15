@@ -2,12 +2,20 @@ package com.sachinsk.Stereotype_Annotation;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import java.util.Arrays;
 
 @SpringBootApplication
 public class StereotypeAnnotationApplication {
 
 	public static void main(String[] args) {
+		//To print all the beans present inside your spring boot application
+		ConfigurableApplicationContext applicationContext = SpringApplication.run(StereotypeAnnotationApplication.class, args);
+		String[] beanDefinitionNames = applicationContext.getBeanDefinitionNames();
+		Arrays.stream(beanDefinitionNames).sorted().forEach(System.out::println);
+
 //		SpringApplication.run(StereotypeAnnotationApplication.class, args);
 
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
